@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="127" pageHeight="99" whenNoDataType="BlankPage" columnWidth="123" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2" uuid="afa1576f-348f-4463-8e86-4655845f7157">
+	<property name="ireport.zoom" value="4.840000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="26"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Gestion.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[select * from produit,paramaitres,codebarre]]>
+	</queryString>
+	<field name="désignation" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="désignation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produit"/>
+	</field>
+	<field name="prix_vente_detail" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="prix_vente_detail"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produit"/>
+	</field>
+	<field name="date_premption" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="date_premption"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produit"/>
+	</field>
+	<field name="nom_magasin" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nom_magasin"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paramaitres"/>
+	</field>
+	<field name="code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="codebarre"/>
+	</field>
+	<pageHeader>
+		<band height="95" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="108" height="18" uuid="e8628521-0682-4633-b831-583f81b3bd36"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="10" isBold="false"/>
+					<paragraph lineSpacing="Fixed" lineSpacingSize="5.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom_magasin}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00">
+				<reportElement x="0" y="74" width="123" height="21" uuid="831cf874-af6c-41a8-b9e8-4245396b39ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Serif" size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Prix: "+$F{prix_vente_detail}+"0 DA"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="18" width="107" height="20" uuid="083e62f0-b4b8-4a37-ad9b-b1701481b727"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="10" isBold="true"/>
+					<paragraph lineSpacing="Fixed" lineSpacingSize="6.4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{désignation}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy/MM/dd" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="107" y="0" width="16" height="76" uuid="1c330eb6-ad65-4e89-8a14-a671f3ff14b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Serif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_premption}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="-1" y="39" width="108" height="37" uuid="e22c2a51-9f1a-4de5-a3f1-329d8c1ff4a7"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{code}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+		</band>
+	</pageHeader>
+</jasperReport>

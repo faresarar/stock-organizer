@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="List des produits" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9be86868-70ca-48e9-b6f5-8e3ed0385a25">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="330"/>
+	<property name="ireport.y" value="2"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="gestion"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="b849395d-ef35-40c7-83f0-1ddf11b11887"/>
+	<queryString>
+		<![CDATA[select * from Produit,Paramaitres]]>
+	</queryString>
+	<field name="marque" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="marque"/>
+		<property name="com.jaspersoft.studio.field.label" value="marque"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produit"/>
+	</field>
+	<field name="référence" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="référence"/>
+		<property name="com.jaspersoft.studio.field.label" value="référence"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produit"/>
+	</field>
+	<field name="désignation" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="désignation"/>
+		<property name="com.jaspersoft.studio.field.label" value="désignation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produit"/>
+	</field>
+	<field name="prix_vente" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="prix_vente"/>
+		<property name="com.jaspersoft.studio.field.label" value="prix_vente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produit"/>
+	</field>
+	<field name="quantité" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="quantité"/>
+		<property name="com.jaspersoft.studio.field.label" value="quantité"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produit"/>
+	</field>
+	<field name="nom_magasin" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nom_magasin"/>
+		<property name="com.jaspersoft.studio.field.label" value="nom_magasin"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paramaitres"/>
+	</field>
+	<field name="adresse" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="adresse"/>
+		<property name="com.jaspersoft.studio.field.label" value="adresse"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paramaitres"/>
+	</field>
+	<field name="num_tel_fax_fix" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="num_tel_fax_fix"/>
+		<property name="com.jaspersoft.studio.field.label" value="num_tel_fax_fix"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paramaitres"/>
+	</field>
+	<field name="num_tel1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="num_tel1"/>
+		<property name="com.jaspersoft.studio.field.label" value="num_tel1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paramaitres"/>
+	</field>
+	<field name="num_tel2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="num_tel2"/>
+		<property name="com.jaspersoft.studio.field.label" value="num_tel2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paramaitres"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="106" splitType="Stretch">
+			<staticText>
+				<reportElement x="193" y="32" width="362" height="46" uuid="9042a9f7-ddf9-4230-9acc-bb03640f31d0"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Liste des Produits manques]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="32" y="0" width="469" height="20" uuid="90e4ee94-58ff-48f5-a0ba-bb1100667810"/>
+				<textFieldExpression><![CDATA[""+$F{nom_magasin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="20" width="469" height="20" uuid="b438d16a-72e2-4ec4-b507-fc4cbda48b03"/>
+				<textFieldExpression><![CDATA[""+$F{adresse}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="40" width="160" height="20" uuid="8f29596f-70aa-4ebf-9cf3-57a388938a85"/>
+				<textFieldExpression><![CDATA[""+$F{num_tel1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="60" width="160" height="20" uuid="8d2826e3-f0ee-45bc-8a0b-f5688b15a842"/>
+				<textFieldExpression><![CDATA[""+$F{num_tel2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="80" width="160" height="20" uuid="6c507ea9-8d2b-4124-8cbc-7257c94265e0"/>
+				<textFieldExpression><![CDATA[""+$F{num_tel_fax_fix}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement style="table" mode="Opaque" x="124" y="7" width="47" height="20" uuid="ae5b5ee2-9748-4bf5-b55c-815cfe659488"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stock]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="171" y="7" width="88" height="20" uuid="91694992-1957-45ad-a072-c07d83a49c41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="468" y="7" width="86" height="20" uuid="ecff2e09-5a16-4066-8f2e-9bed0e3ba421"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[prix_vente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table" x="259" y="7" width="209" height="20" uuid="8df0fc7e-4460-49b8-91ed-0dadf6270e83"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Désignation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="44" y="7" width="80" height="20" uuid="8ad415c7-49a2-4db0-a175-30f11e7fa19a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Référence]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="7" width="44" height="20" uuid="8907f0b1-ec79-4b50-b876-7fb9394721aa"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Num]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement style="table" x="171" y="0" width="88" height="24" uuid="81717a78-894c-41de-bca1-bc2f3259c874"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[""+$F{marque}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;(###0.00)">
+				<reportElement style="table" x="468" y="0" width="86" height="24" uuid="6fb57252-536b-47f0-829f-8ddbecc16bd9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[""+$F{prix_vente}+0]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table" x="259" y="0" width="209" height="24" uuid="10e7b0cb-383e-4eee-92d7-77022273ff0e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[""+$F{désignation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="44" y="0" width="80" height="24" uuid="65173772-2732-499e-bf6c-22a1a57979f5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{référence}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="44" height="24" uuid="8a77020c-0f13-46c3-83bb-2c4ee22cc35f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="0" width="47" height="24" uuid="a546e7cd-a88a-4d13-bc53-a4fa9c906138"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{quantité}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

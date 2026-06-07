@@ -1,0 +1,674 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package vue;
+
+import controler.BoutonColor;
+import controler.Fournisseur_op;
+import controler.TableMouseListener;
+import controler.TextNumber;
+import controler.Tools;
+import controler.Versement_fournisseur;
+import java.awt.Color;
+import java.awt.Font;
+
+import java.util.ArrayList;
+import java.util.Hashtable;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.swing.table.JTableHeader;
+
+import model.Fournisseur;
+import raven.javaswingdev.MessageDialog;
+import static vue.VenteComptoir4.m_verse;
+//import static vue.GestionFournisseur.ListFournisseur;
+
+
+
+import static vue.VenteComptoir4.nv_credit;
+import static vue.VenteComptoir4.total_apres_remise;
+import static vue.VenteComptoir4.Ancien_credit;
+
+
+/**
+ *
+ * @author Rais
+ */
+public class RechercherFournisseur extends javax.swing.JFrame {
+static public ArrayList<Fournisseur> ListFournisseur; 
+//static public ArrayList<Versement> ListVers;
+int option=1;
+String date1,date2;
+double dett;
+String Type_v="";
+//ImageIcon   img = new ImageIcon("images/gs.png");
+static public Fournisseur_op op= Fournisseur_op.getObj();
+Versement_fournisseur vop= Versement_fournisseur.getObj();    
+static int nbfourn=0;
+public static int index=0;
+static double Tdette=0;
+static TextNumber tn= TextNumber.getObj();
+BoutonColor bc= BoutonColor.getInstance();
+Tools t=Tools.getInstance();
+//Message me = new Message(this, true,"/images/stop.png","Veuiller sélectionner un fournisseur","",Color.red);
+//Message me1 = new Message(this, true,"/images/stop.png","Liste vide,il faut ajouter des fournisseurs","",Color.red);
+    /**
+     * Creates new form gestionClient
+     */
+  
+   private static RechercherFournisseur obj=null;
+  public static RechercherFournisseur getObj(){
+      
+
+      
+        if(obj==null){
+            try {
+         obj=new RechercherFournisseur();
+            } catch (Exception ex) {
+                Logger.getLogger(RechercherFournisseur.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else {
+        try{
+        ListFournisseur=op.getList_Fournisseur("",0);
+          nbfourn=ListFournisseur.size();
+          Nbfournisseur.setText(nbfourn+"");
+          Tdette=0;
+          for (int i=0;i<nbfourn;i++)
+          Tdette=ListFournisseur.get(i).getDette()+Tdette;
+          TotalDette.setText(tn.Afficher2Verguile(Tdette));
+        op.displayResult(ListFournisseur,jTable3);
+        
+        }catch(Exception e){}
+        
+        
+        
+        }
+        
+        
+        return obj;
+    }
+    public RechercherFournisseur() {
+       //  URL url=getClass().getResource("images/pw.png");
+       // if(url != null){
+             this.setIconImage(t.getImageIcone().getImage());
+         //               }
+        initComponents();
+       //   this.setIconImage(img.getImage());
+          jTable3.setRowHeight(30);
+           JTableHeader tableHeader = jTable3.getTableHeader();
+            jTable3.getTableHeader().setOpaque(false);
+      tableHeader.setBackground(Color.WHITE);
+     tableHeader.setForeground(Color.BLACK);
+     
+      Font headerFont = new Font("Verdana", Font.PLAIN, 14);
+      tableHeader.setFont(headerFont);
+         jButton1.setVisible(false);
+          try {ListFournisseur=op.getList_Fournisseur("",0);
+          nbfourn=ListFournisseur.size();
+          Nbfournisseur.setText(nbfourn+"");
+          Tdette=0;
+          for (int i=0;i<nbfourn;i++)
+          Tdette=ListFournisseur.get(i).getDette()+Tdette;
+          TotalDette.setText(tn.Afficher2Verguile(Tdette));
+        op.displayResult(ListFournisseur,jTable3);
+         //op.displayResult(ListFournisseur,jTable2);
+        // ListVers=vop.getList_Versement_Fournisseur();
+       //  vop.displayResult(ListVers,jTable3);
+        bc.ColorerBouton(jButtonPrint, new Color(102,102,102));
+        
+                  bc.ColorerBouton(jButtonAdd, new Color(41,134,10));
+    bc.ColorerBouton(jButtonModifier,  new Color(1, 101, 225));
+      bc.ColorerBouton(jButtonSupp, Color.red);
+        bc.ColorerBouton(Reglement, new Color(102,102,255));
+     jTable3.setComponentPopupMenu(jPopupMenu);
+      jTable3.addMouseListener(new TableMouseListener(jTable3));
+    
+    
+    } catch (Exception ex) {
+        Logger.getLogger(GestionProduit.class.getName()).log(Level.SEVERE, null, ex);
+        ex.printStackTrace();
+    }
+          
+     //    String datePattern = "yyyy-MM-dd";
+   //  SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);    
+          
+           
+  
+         
+          
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        dateComponentFormatter1 = new org.jdatepicker.DateComponentFormatter();
+        jPopupMenu = new javax.swing.JPopupMenu();
+        Supprimer = new javax.swing.JMenuItem();
+        jMenuIModifier = new javax.swing.JMenuItem();
+        jMenuVersement = new javax.swing.JMenuItem();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        nom_prenom_f = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        Nbfournisseur = new javax.swing.JTextField();
+        TotalDette = new javax.swing.JTextField();
+        jButtonPrint = new javax.swing.JButton();
+        jButtonAdd = new javax.swing.JButton();
+        jButtonSupp = new javax.swing.JButton();
+        jButtonModifier = new javax.swing.JButton();
+        Reglement = new javax.swing.JButton();
+
+        Supprimer.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Supprimer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-supprimer-pour-toujours-24.png"))); // NOI18N
+        Supprimer.setText("Supprimer");
+        Supprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SupprimerActionPerformed(evt);
+            }
+        });
+        jPopupMenu.add(Supprimer);
+
+        jMenuIModifier.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jMenuIModifier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        jMenuIModifier.setText("Modifier");
+        jMenuIModifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuIModifierActionPerformed(evt);
+            }
+        });
+        jPopupMenu.add(jMenuIModifier);
+
+        jMenuVersement.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jMenuVersement.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/budget24.png"))); // NOI18N
+        jMenuVersement.setText("Versement");
+        jMenuVersement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuVersementActionPerformed(evt);
+            }
+        });
+        jPopupMenu.add(jMenuVersement);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("liste des fournisseurs");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton1.setText("sélectionner");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jTable3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nom et prénom", "adresse", "email", "num tel1", "num Tel2", "Numéro registre commerce", "numero identification fiscale", "Numéro d'article d'imposition", "dette", "Total versements", "Total Achats"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable3);
+
+        nom_prenom_f.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        nom_prenom_f.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        org.jdesktop.swingx.border.IconBorder iconBorder1 = new org.jdesktop.swingx.border.IconBorder();
+        iconBorder1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search2.png"))); // NOI18N
+        nom_prenom_f.setBorder(iconBorder1);
+        nom_prenom_f.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nom_prenom_fKeyReleased(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel11.setText("Recherche par nom et prénom  ");
+
+        jPanel1.setBackground(new java.awt.Color(0, 102, 204));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1401, 64));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Liste des fournisseurs");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel2.setText("Afiicher");
+
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tous", "Dette=0", "Dette>0", "Dette<0" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Nombre des Fournisseurs");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Total Dette");
+
+        Nbfournisseur.setEditable(false);
+        Nbfournisseur.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Nbfournisseur.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        TotalDette.setEditable(false);
+        TotalDette.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        TotalDette.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TotalDette.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TotalDetteActionPerformed(evt);
+            }
+        });
+
+        jButtonPrint.setBackground(new java.awt.Color(102, 102, 102));
+        jButtonPrint.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonPrint.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonPrint.setText("imprimer");
+        jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrintActionPerformed(evt);
+            }
+        });
+
+        jButtonAdd.setBackground(new java.awt.Color(51, 204, 0));
+        jButtonAdd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonAdd.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonAdd.setText("Ajouter");
+        jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddActionPerformed(evt);
+            }
+        });
+
+        jButtonSupp.setBackground(new java.awt.Color(255, 153, 153));
+        jButtonSupp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonSupp.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSupp.setText("Supprimer");
+        jButtonSupp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSuppActionPerformed(evt);
+            }
+        });
+
+        jButtonModifier.setBackground(new java.awt.Color(153, 153, 255));
+        jButtonModifier.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonModifier.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonModifier.setText("Modifier");
+        jButtonModifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModifierActionPerformed(evt);
+            }
+        });
+
+        Reglement.setBackground(new java.awt.Color(102, 102, 255));
+        Reglement.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Reglement.setForeground(new java.awt.Color(255, 255, 255));
+        Reglement.setText("Versement");
+        Reglement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReglementActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1424, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(509, 509, 509)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonSupp, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Reglement, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(428, 428, 428)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Nbfournisseur, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TotalDette, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(332, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nom_prenom_f, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 751, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(nom_prenom_f, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonSupp, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Reglement, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(Nbfournisseur, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TotalDette, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 63, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void nom_prenom_fKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nom_prenom_fKeyReleased
+      int rech;
+        if(!nom_prenom_f.getText().trim().equals("")){
+      rech=4;
+      }else{rech=0;}
+        
+        try {ListFournisseur=op.getList_Fournisseur(nom_prenom_f.getText().trim(),rech);
+        
+            op.displayResult(ListFournisseur,jTable3);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_nom_prenom_fKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         index=jTable3.getSelectedRow();
+         
+         if(index==-1)t.ShowFailMessage(obj, "Veuiller sélectionner un fournisseur");
+             //JOptionPane.showMessageDialog(null, " veuiller sélectionner un fournisseur  ","",JOptionPane.INFORMATION_MESSAGE,img);
+    else {
+         setVisible(false);
+         NewAchat.f=ListFournisseur.get(index);
+         NewAchat.nom_fournisseur.setText(ListFournisseur.get(index).getNom_prenom_fournisseur());
+     
+   
+    try {nv_credit=total_apres_remise-m_verse;
+        double dette=ListFournisseur.get(index).getDette() ;
+         nv_credit=nv_credit+dette;
+          Ancien_credit.setText(tn.Afficher2Verguile(nv_credit));
+       // double td=NewAchat.total_dette;
+      //  double ttc=NewAchat.total_TTc;
+        NewAchat.dette_label.setText(tn.Afficher2Verguile(dette));
+       // NewAchat.montant_verser1.setText((op.getDette(id)+ttc)+"");
+          // NewAchat.dtte=op.getDette(id);
+    } catch (Exception ex) {
+        Logger.getLogger(RechercherFournisseur.class.getName()).log(Level.SEVERE, null, ex);
+    }
+     // NewAchat.aop.displayResult1(ListAchat,jTable1);
+         
+  
+         }
+     
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifierActionPerformed
+        index=jTable3.getSelectedRow();
+        if(index==-1)t.ShowFailMessage(obj, "Veuiller sélectionner un fournisseur");
+            //JOptionPane.showMessageDialog(null, " veuiller sélectionner un fournisseur pour Modifier ","",JOptionPane.INFORMATION_MESSAGE,img);
+        else   ModifierFournisseur.getObj(ListFournisseur.get(index)).setVisible(true);
+    }//GEN-LAST:event_jButtonModifierActionPerformed
+
+    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
+         AjouterFournisseur.getObj().setVisible(true);
+    }//GEN-LAST:event_jButtonAddActionPerformed
+
+    private void jButtonSuppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuppActionPerformed
+       Tdette=0;
+        if(index==-1)t.ShowFailMessage(obj, "Veuiller sélectionner un fournisseur");
+            //JOptionPane.showMessageDialog(null, " Veuiller sélectionner un fournisseur pour supprimer ","",JOptionPane.INFORMATION_MESSAGE,img);
+        else try {
+           // int  result =JOptionPane.showConfirmDialog(null,"Voulez vous supprimer ce fournisseur","",JOptionPane.YES_NO_OPTION);
+               if(t.ShowConfirmMessage("Voulez vous supprimer  ce fournisseur ?", "", this)==MessageDialog.MessageType.OK){
+                op.sup_Fournisseur(ListFournisseur.get(jTable3.getSelectedRow()).getId_f()+"");
+           //     JOptionPane.showMessageDialog(null, " Bien supprimer ","",JOptionPane.INFORMATION_MESSAGE,img);
+           t.ShowGoodMessage(this, "Bien supprimer");
+                ListFournisseur.remove(jTable3.getSelectedRow());
+                op.displayResult(ListFournisseur,jTable3);
+                 RechercherFournisseur.Nbfournisseur.setText(ListFournisseur.size()+"");
+         for (int i=0;i<ListFournisseur.size();i++)
+          Tdette=ListFournisseur.get(i).getDette()+Tdette;
+         RechercherFournisseur.TotalDette.setText(tn.Afficher2Verguile(Tdette)+" DA");
+
+               // op.displayResult(ListFournisseur,jTable2);
+
+            }else{}
+        } catch (Exception ex) {
+            Logger.getLogger(GestionProduit.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonSuppActionPerformed
+
+    private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
+ //  System.out.println(ListFournisseur.get(0).getId_fournisseur());
+   //System.out.println(ListFournisseur.get(0).getNom_prenom_fournisseur());
+   //System.out.println(ListFournisseur.get(0).getAdresse());
+   //System.out.println(ListFournisseur.get(0).getCatégorie_fournisseur());
+   //System.out.println(ListFournisseur.get(0).getCrédit());
+   //System.out.println(ListFournisseur.get(0).getDette());
+   //System.out.println(ListFournisseur.get(0).getEmail());
+   //System.out.println(ListFournisseur.get(0).getEntreuprise());
+   //System.out.println(ListFournisseur.get(0).getId_f());
+  // System.out.println(ListFournisseur.get(0).getNum_article_imposition());
+   //System.out.println(ListFournisseur.get(0).getNum_id_fiscale());
+   //System.out.println(ListFournisseur.get(0).getNum_reg());
+   //System.out.println(ListFournisseur.get(0).getNum_tel1());
+   //System.out.println(ListFournisseur.get(0).getNum_tel2());
+        if(ListFournisseur.isEmpty()) t.ShowFailMessage(obj, "il faut ajouter des fournisseurs");
+            //JOptionPane.showMessageDialog(null, " Liste vide ","",JOptionPane.INFORMATION_MESSAGE,img);
+        else reportsengine.ReportsManager.getInstance().showReport("List_Fournisseur_dette.jasper", new Hashtable(), "Liste des fournisseurs", ListFournisseur);
+    }//GEN-LAST:event_jButtonPrintActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+      int pos=jComboBox1.getSelectedIndex();
+     
+    //  System.out.println("index="+jComboBox1.getSelectedIndex());
+        try {ListFournisseur=op.getList_Fournisseur("",pos);
+        
+            op.displayResult(ListFournisseur,jTable3);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void TotalDetteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TotalDetteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TotalDetteActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+      
+     //  ListFournisseur.clear();
+    //   ListVers.clear();
+        this.dispose();
+      obj=null;
+      jButton1.setVisible(false);
+    }//GEN-LAST:event_formWindowClosing
+
+    private void ReglementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReglementActionPerformed
+     index=jTable3.getSelectedRow();
+        if(index==-1) t.ShowFailMessage(obj, "Veuiller sélectionner un fournisseur");
+            //JOptionPane.showMessageDialog(null, " Veuiller sélectionner un fournisseur ","",JOptionPane.INFORMATION_MESSAGE,img);
+        else {
+            try {
+        VersementFournisseur.getObj(ListFournisseur.get(index)).setVisible(true); 
+        }catch(Exception e){}
+        
+        }
+    }//GEN-LAST:event_ReglementActionPerformed
+
+    private void SupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SupprimerActionPerformed
+       Tdette=0;
+        if(index==-1)t.ShowFailMessage(obj, "Veuiller sélectionner un fournisseur");
+            //JOptionPane.showMessageDialog(null, " Veuiller sélectionner un fournisseur pour supprimer ","",JOptionPane.INFORMATION_MESSAGE,img);
+        else try {
+           // int  result =JOptionPane.showConfirmDialog(null,"Voulez vous supprimer ce fournisseur","",JOptionPane.YES_NO_OPTION);
+              if(t.ShowConfirmMessage("Voulez vous supprimer  ce fournisseur ?", "", this)==MessageDialog.MessageType.OK){
+                op.sup_Fournisseur(ListFournisseur.get(jTable3.getSelectedRow()).getId_f()+"");
+                t.ShowGoodMessage(this, "Bien supprimer");
+               // JOptionPane.showMessageDialog(null, " Bien supprimer ","",JOptionPane.INFORMATION_MESSAGE,img);
+                ListFournisseur.remove(jTable3.getSelectedRow());
+                op.displayResult(ListFournisseur,jTable3);
+                 RechercherFournisseur.Nbfournisseur.setText(ListFournisseur.size()+"");
+        /* for (int i=0;i<ListFournisseur.size();i++)
+          Tdette=ListFournisseur.get(i).getDette()+Tdette;
+         RechercherFournisseur.TotalDette.setText(tn.Afficher2Verguile(Tdette)+" DA");*/
+    Tdette=op.getTotalDette();
+    RechercherFournisseur.TotalDette.setText(tn.Afficher2Verguile(Tdette)+" DA");
+               // op.displayResult(ListFournisseur,jTable2);
+
+            }else{}
+        } catch (Exception ex) {
+            Logger.getLogger(GestionProduit.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_SupprimerActionPerformed
+
+    private void jMenuIModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIModifierActionPerformed
+         index=jTable3.getSelectedRow();
+        if(index==-1)t.ShowFailMessage(obj, "Veuiller sélectionner un fournisseur");
+            //JOptionPane.showMessageDialog(null, " veuiller sélectionner un fournisseur pour Modifier ","",JOptionPane.INFORMATION_MESSAGE,img);
+        else   ModifierFournisseur.getObj(ListFournisseur.get(index)).setVisible(true);
+    }//GEN-LAST:event_jMenuIModifierActionPerformed
+
+    private void jMenuVersementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVersementActionPerformed
+      index=jTable3.getSelectedRow();
+        if(index==-1)t.ShowFailMessage(obj, "Veuiller sélectionner un fournisseur");
+            //JOptionPane.showMessageDialog(null, " Veuiller sélectionner un fournisseur ","",JOptionPane.INFORMATION_MESSAGE,img);
+        else {
+            try {
+        VersementFournisseur.getObj(ListFournisseur.get(index)).setVisible(true); 
+        }catch(Exception e){}
+        
+        }
+    }//GEN-LAST:event_jMenuVersementActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+   
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JTextField Nbfournisseur;
+    private javax.swing.JButton Reglement;
+    private javax.swing.JMenuItem Supprimer;
+    public static javax.swing.JTextField TotalDette;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private org.jdatepicker.DateComponentFormatter dateComponentFormatter1;
+    public static javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonAdd;
+    private javax.swing.JButton jButtonModifier;
+    private javax.swing.JButton jButtonPrint;
+    private javax.swing.JButton jButtonSupp;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenuItem jMenuIModifier;
+    private javax.swing.JMenuItem jMenuVersement;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPopupMenu jPopupMenu;
+    private javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JTable jTable3;
+    private javax.swing.JTextField nom_prenom_f;
+    // End of variables declaration//GEN-END:variables
+
+/*public   double calulerTotatDette(ArrayList<Fournisseur> ListFournisseur_){
+    Tdette=0;
+  for (int i=0;i<ListFournisseur_.size();i++)
+          Tdette=ListFournisseur_.get(i).getDette()+Tdette;
+    try {
+        RechercherFournisseur.TotalDette.setText(tn.Afficher2Verguile(Tdette)+" DA");
+    } catch (Exception ex) {
+        Logger.getLogger(RechercherFournisseur.class.getName()).log(Level.SEVERE, null, ex);
+    }
+return Tdette;
+}*/
+}

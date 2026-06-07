@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="113" pageHeight="56" whenNoDataType="BlankPage" columnWidth="109" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2" uuid="afa1576f-348f-4463-8e86-4655845f7157">
+	<property name="ireport.zoom" value="8.954302432552389"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id_produit" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     produit_barcode.`designation` AS produit_barcode_designation,
+     produit_barcode.`barecode` AS produit_barcode_barecode,
+     print.`print_nom_boutique` AS print_print_nom_boutique,
+     print.`print_designation` AS print_print_designation,
+     print.`prix_vente` AS print_prix_vente,
+     produit_barcode.`prix_vente_1` AS produit_barcode_prix_vente_1,
+     produit_barcode.`prix_vente_2` AS produit_barcode_prix_vente_2,
+     produit_barcode.`prix_vente_3` AS produit_barcode_prix_vente_3,
+     infos.`nom` AS infos_nom
+FROM
+     `produit_barcode` produit_barcode,
+     `print` print,
+     `infos` infos
+WHERE
+     produit_barcode.id_produit = $P{id_produit} limit 1]]>
+	</queryString>
+	<field name="produit_barcode_designation" class="java.lang.String"/>
+	<field name="produit_barcode_barecode" class="java.lang.String"/>
+	<field name="print_print_nom_boutique" class="java.lang.Boolean"/>
+	<field name="print_print_designation" class="java.lang.Boolean"/>
+	<field name="print_prix_vente" class="java.lang.Integer"/>
+	<field name="produit_barcode_prix_vente_1" class="java.lang.Double"/>
+	<field name="produit_barcode_prix_vente_2" class="java.lang.Double"/>
+	<field name="produit_barcode_prix_vente_3" class="java.lang.Double"/>
+	<field name="infos_nom" class="java.lang.String"/>
+	<pageHeader>
+		<band height="52" splitType="Stretch">
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="3" y="38" width="109" height="12" uuid="831cf874-af6c-41a8-b9e8-4245396b39ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Segoe UI" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{print_prix_vente}.equals( 1 )?"Prix: "+$F{produit_barcode_prix_vente_1}+" DA": $F{print_prix_vente}.equals( 2 )?"Prix: "+$F{produit_barcode_prix_vente_2}+" DA":"Prix: "+$F{produit_barcode_prix_vente_3}+" DA"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="-1" width="109" height="14" uuid="083e62f0-b4b8-4a37-ad9b-b1701481b727"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6" isBold="false"/>
+					<paragraph lineSpacing="Fixed" lineSpacingSize="4.5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{print_print_designation}.equals( true )?$F{produit_barcode_designation}:""]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="0" y="13" width="109" height="25" uuid="6db917c5-a8f2-4f71-9df9-e8543a483def"/>
+				<jr:Code128 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="none">
+					<jr:codeExpression><![CDATA[$F{produit_barcode_barecode}]]></jr:codeExpression>
+				</jr:Code128>
+			</componentElement>
+		</band>
+	</pageHeader>
+</jasperReport>

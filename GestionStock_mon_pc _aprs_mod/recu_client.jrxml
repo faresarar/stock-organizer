@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="421" pageHeight="595" whenNoDataType="BlankPage" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="6c9bea52-09a1-4c6a-a020-ad6936a2d4df">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="478"/>
+	<property name="ireport.y" value="619"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Gestion.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[SELECT
+  *
+FROM
+    paramaitres,versement_fournisseur]]>
+	</queryString>
+	<field name="nom_magasin" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nom_magasin"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paramaitres"/>
+	</field>
+	<field name="adresse" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="adresse"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paramaitres"/>
+	</field>
+	<field name="num_tel_fax_fix" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="num_tel_fax_fix"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paramaitres"/>
+	</field>
+	<field name="num_tel1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="num_tel1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paramaitres"/>
+	</field>
+	<field name="num_tel2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="num_tel2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paramaitres"/>
+	</field>
+	<field name="activite" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="activite"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paramaitres"/>
+	</field>
+	<field name="nom_prénom_fournisseur" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nom_prénom_fournisseur"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="versement_fournisseur"/>
+	</field>
+	<field name="date_versement" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="date_versement"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="versement_fournisseur"/>
+	</field>
+	<field name="montant_versé" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="montant_versé"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="versement_fournisseur"/>
+	</field>
+	<field name="id_f" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id_f"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="versement_fournisseur"/>
+	</field>
+	<field name="num_versement" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="num_versement"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="versement_fournisseur"/>
+	</field>
+	<field name="etat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="etat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="versement_fournisseur"/>
+	</field>
+	<field name="num_bon_réception" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="num_bon_réception"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="versement_fournisseur"/>
+	</field>
+	<field name="remarque" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="remarque"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="versement_fournisseur"/>
+	</field>
+	<field name="regler_par" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="regler_par"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="versement_fournisseur"/>
+	</field>
+	<field name="ancien_dette" class="java.lang.Double"/>
+	<variable name="Nouveau_solde" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{ancien_dette}-$F{montant_versé}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="381" height="26" backcolor="#F7F7F7" uuid="ef29866d-deea-431b-be57-cab72a2570be"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="17" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R E Ç U   DE   V E R S E M E N T]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="169" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="111" width="135" height="57" isPrintInFirstWholeBand="true" uuid="106dbb12-b2bb-4ed6-adc8-64a2d5495baa"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement x="3" y="11" width="232" height="20" uuid="fed7799e-c04b-4492-8895-2b68274d9eea"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom_magasin}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="3" y="31" width="232" height="17" uuid="4f26d494-2b33-44f8-b41b-7cdd8d5117a7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{activite}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="3" y="48" width="262" height="17" uuid="dffcffb1-43ad-4be2-b01b-6062f7528886"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adresse}]]></textFieldExpression>
+			</textField>
+			<image hAlign="Right" vAlign="Middle" onErrorType="Blank">
+				<reportElement x="307" y="11" width="72" height="72" uuid="966f305e-c23e-4318-ae40-ae4d34185ba1"/>
+				<imageExpression><![CDATA["/images/logo.png"]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="71" y="66" width="220" height="17" uuid="a7cf39c0-b46d-4ad2-b3ff-0cc9e3522ba1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_tel2}.equals( "" ) ? $F{num_tel1}:
+($F{num_tel1}+" - "+$F{num_tel2})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="66" width="68" height="17" uuid="02dbb074-efc2-4b0f-9396-1fef9a03a3c8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Téléphone:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="135" y="111" width="246" height="57" uuid="160abbf1-1625-4fc5-840d-fd1981a0e41e"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="130" width="202" height="17" uuid="99c54d37-a325-4afb-badd-f193523118e1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_tel1}.equals( "" ) ? $F{num_tel1}:
+($F{num_tel1}+" - "+$F{num_tel2})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="137" y="130" width="40" height="17" uuid="17c42482-487f-4bb3-a17d-7fa5dcb5cf13"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tél:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="4" y="111" width="131" height="19" backcolor="#FFFFFF" uuid="b49ca523-3096-485a-82e1-feda234c99ec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="137" y="111" width="40" height="19" backcolor="#FFFFFF" uuid="146dbbd6-4bd3-450b-b895-5d02051e4bdc"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Client:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="111" width="202" height="19" uuid="a1d34841-843a-4161-ba76-4a4cffbc9e89"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom_prénom_fournisseur}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="187" y="94" width="192" height="17" forecolor="#666666" uuid="d13fde36-9b19-4f4e-bc25-978e43ca2fdb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["établir par: "+$F{regler_par}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="137" y="147" width="242" height="19" uuid="02c44b6d-90da-4268-b081-1b07a609f408"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adresse}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy/MM/dd" isBlankWhenNull="true">
+				<reportElement x="4" y="130" width="133" height="20" uuid="cd20079c-2e97-43df-8120-df9bb06f3e26"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{date_versement}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnFooter>
+		<band height="344">
+			<staticText>
+				<reportElement x="132" y="49" width="115" height="17" uuid="53a73492-f3c8-459b-9934-26bc7f9bd6b8"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ VERSEMENET]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" mode="Transparent" x="247" y="49" width="112" height="17" backcolor="#F4F4F4" uuid="529f00f5-1258-4123-a5b9-222616d9000c"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montant_versé}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="132" y="32" width="115" height="17" uuid="ae7f1286-f0ad-46da-b8b4-ce548eeb1050"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ ANCIEN SOLDE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="32" width="23" height="17" uuid="fd24309d-81a5-4ff8-94f6-1efddf45144d"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ DA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="49" width="23" height="17" uuid="09db7736-ca7f-4539-8609-96897fab242c"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ DA]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement positionType="Float" mode="Transparent" x="247" y="32" width="112" height="17" backcolor="#F4F4F4" uuid="f020d58b-eb01-4f27-be77-4fc29e24e90d"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ancien_dette}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="207" y="0" width="84" height="14" forecolor="#666666" uuid="01795f32-2893-41fe-9881-c2b515eab9ae"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="123" y="0" width="84" height="14" forecolor="#666666" uuid="f9e9184e-2adb-483a-95bd-54582330e23c"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

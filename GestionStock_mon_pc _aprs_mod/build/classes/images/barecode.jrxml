@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="barecode" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0c2d149b-4753-4a19-a7f9-66737486526b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from produit]]>
+	</queryString>
+	<field name="categorie_produit" class="java.lang.Object"/>
+	<field name="categorie_piece" class="java.lang.Object"/>
+	<field name="etat" class="java.lang.Object"/>
+	<field name="marque" class="java.lang.Object"/>
+	<field name="numero_serie" class="java.lang.Object"/>
+	<field name="référence" class="java.lang.Object"/>
+	<field name="désignation" class="java.lang.Object"/>
+	<field name="étagére" class="java.lang.Object"/>
+	<field name="code_barre" class="java.lang.Object"/>
+	<field name="remarque" class="java.lang.Object"/>
+	<field name="date_achat" class="java.lang.Object"/>
+	<field name="prix_achat" class="java.lang.Object"/>
+	<field name="prix_vente" class="java.lang.Object"/>
+	<field name="id_fournisseur" class="java.lang.Object"/>
+	<field name="quantité" class="java.lang.Object"/>
+	<field name="id_produit" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<componentElement>
+				<reportElement x="124" y="15" width="200" height="50" uuid="c39de5f0-2a64-4e4d-a41b-bb1a48b87afc"/>
+				<jr:Code128 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{code_barre}]]></jr:codeExpression>
+				</jr:Code128>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report5" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d882a403-2a0d-4f92-8bb4-9ff521c26337">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Gestion.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString language="SQL">
+		<![CDATA[select * from fournisseur,dette_fournisseur]]>
+	</queryString>
+	<field name="id_fournisseur" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="id_fournisseur"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="fournisseur"/>
+	</field>
+	<field name="nom_prenom_fournisseur" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nom_prenom_fournisseur"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="fournisseur"/>
+	</field>
+	<field name="entreuprise" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="entreuprise"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="fournisseur"/>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="fournisseur"/>
+	</field>
+	<field name="adresse" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="adresse"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="fournisseur"/>
+	</field>
+	<field name="num_tel1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="num_tel1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="fournisseur"/>
+	</field>
+	<field name="num_tel2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="num_tel2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="fournisseur"/>
+	</field>
+	<field name="num_reg" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="num_reg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="fournisseur"/>
+	</field>
+	<field name="num_id_fiscale" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="num_id_fiscale"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="fournisseur"/>
+	</field>
+	<field name="num_article_imposition" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="num_article_imposition"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="fournisseur"/>
+	</field>
+	<field name="id_f" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id_f"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="fournisseur"/>
+	</field>
+	<field name="dette" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="dette"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dette_fournisseur"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="72" splitType="Stretch">
+			<staticText>
+				<reportElement x="167" y="0" width="234" height="31" uuid="979fb0d5-ac9c-49e6-bc6f-c8f3538d02c6"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Liste des fournisseurs]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="115" y="41" width="98" height="20" uuid="0d32e97e-6769-4642-b5f6-14297112f429"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Num Tel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="41" width="115" height="20" uuid="d1ff1173-9a7f-4f24-bf57-e5c0460433f1"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fournisseur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="446" y="41" width="99" height="20" uuid="e04c0352-2768-4b07-b1a1-c45e63539a62"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dette]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="41" width="233" height="20" uuid="fa7042e7-413c-46a3-9d30-bb5baaa0890d"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Adresse]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="115" y="0" width="98" height="20" uuid="3312b96f-b8b5-4cb5-9594-219d7794d06d"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_tel1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="115" height="20" uuid="093824a2-cc11-41fb-b0c6-46fb5bf6234f"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom_prenom_fournisseur}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;(###0.00)">
+				<reportElement x="446" y="0" width="99" height="20" uuid="c93c86a7-9b54-4ee8-9f5c-a96697eee96c"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dette}+0]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="213" y="0" width="233" height="20" uuid="d0f33f39-71cb-4c36-95d4-5586ac4869d9"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adresse}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
